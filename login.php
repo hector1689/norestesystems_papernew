@@ -60,8 +60,8 @@
                     
                   </div>
                   <div class="card-action">
-                    <a href="index.php">
-                      <i class="material-icons right">replay</i>
+                    <a href="index.php" class="blue darken-1">
+                      <i class="material-icons right">reply</i>
                     </a>
                     <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Entrar
                       <i class="material-icons right">send</i>
