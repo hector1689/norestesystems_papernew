@@ -37,33 +37,124 @@
             <div style="height: 40px;"></div>
             <div class="row">
 
+<?php 
 
 
-<nav class="light-blue accent-4 z-depth-5">
-  <div class="nav-wrapper">
-<a ><strong>Publicaciones Totales</strong></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><i class="Tiny material-icons">public</i></li>
-      <li><span class="new badge">4</span></li>
-      <li><i class="Tiny material-icons">stars</i></li>
-      <li><span class="new badge">4</span></li>
-      <li><i class="Tiny material-icons">work</i></li>
-      <li><span class="new badge">4</span></li>
-      <li><i class="Tiny material-icons">verified_user</i></li>
-      <li><span class="new badge">4</span></li>
-      <li><i class="Tiny material-icons">group</i></li>
-      <li><span class="new badge">4</span></li>
-      <li><i class="Tiny material-icons">person</i></li>
-      <li><span class="new badge">4</span></li>
-      <li><i class="Tiny material-icons">assignment</i></li>
-      <li><span class="new badge">4</span></li>
-    </ul>
-  </div>
-</nav>
+include("class/database.php");
+$objData = new Database();
 
 
 
-             
+$sth3 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `cat_nacional`  ');
+
+$sth3->execute();
+
+$result3 = $sth3->fetchAll();
+
+if($result3){
+  foreach ($result3 as $key => $value) {
+ }
+$nacional_total=$value['cuenta'];                               
+ }
+
+ $sth4 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `cat_deportes`  ');
+
+$sth4->execute();
+
+$result4 = $sth4->fetchAll();
+
+if($result4){
+  foreach ($result4 as $key => $value) {
+ }
+$deportes_total=$value['cuenta'];                               
+ }
+
+
+$sth5 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `cat_politica`  ');
+
+$sth5->execute();
+
+$result5 = $sth5->fetchAll();
+
+if($result5){
+  foreach ($result5 as $key => $value) {
+ }
+$politica_total=$value['cuenta'];                               
+ }
+
+ $sth6 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `cat_seguridad`  ');
+
+$sth6->execute();
+
+$result6 = $sth6->fetchAll();
+
+if($result6){
+  foreach ($result6 as $key => $value) {
+ }
+$seguridad_total=$value['cuenta'];                               
+ }
+
+  $sth7 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `columnistas`  ');
+
+$sth7->execute();
+
+$result7 = $sth7->fetchAll();
+
+if($result7){
+  foreach ($result7 as $key => $value) {
+ }
+$columnistas_total=$value['cuenta'];                               
+ }
+
+   $sth8 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `nota_columnista`  ');
+
+$sth8->execute();
+
+$result8 = $sth8->fetchAll();
+
+if($result8){
+  foreach ($result8 as $key => $value) {
+ }
+$nota_columnistas_total=$value['cuenta'];                               
+ }
+
+
+$sth9 = $objData->prepare('SELECT COUNT(id) as cuenta FROM `video_semana`  ');
+
+$sth9->execute();
+
+$result9 = $sth9->fetchAll();
+
+if($result9){
+  foreach ($result9 as $key => $value) {
+ }
+$video_total=$value['cuenta'];                               
+ }
+
+ ?>
+
+            <nav class="light-blue accent-4 z-depth-5">
+              <div class="nav-wrapper">
+            <a >&nbsp;&nbsp;&nbsp;<strong>Publicaciones Totales</strong></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <li><i class="Tiny material-icons">public</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $nacional_total;?></span></li>
+                  <li><i class="Tiny material-icons">stars</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $deportes_total;?></span></li>
+                  <li><i class="Tiny material-icons">work</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $politica_total;?></span></li>
+                  <li><i class="Tiny material-icons">verified_user</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $seguridad_total;?></span></li>
+                  <li><i class="Tiny material-icons">movie</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $columnistas_total;?></span></li>
+                  <li><i class="Tiny material-icons">person</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $video_total;?></span></li>
+                  <li><i class="Tiny material-icons">assignment</i></li>
+                  <li><span class=" teal darken-2 badge" style="color:white;"><?php echo $nota_columnistas_total;?></span></li>
+                </ul>
+              </div>
+            </nav>
+
 
                 <div style="height: 40px;"></div>
 

@@ -1,3 +1,138 @@
+<script >
+  $(document).ready(function(){
+
+
+
+$(".enviar_noticia").click(function(){
+$("#noticia_nacional").show();
+
+
+a=$(".nombre_nota_n").val();
+b=$(".previa_nota_n").val();
+c=$(".nota_nota_n").val();
+d=$("#imagen_nota_n").val();
+e=$("#principal_nota_n").val();
+f=$(".date_nota_n").val();
+$.ajax({
+  url:"administrador/php/alta_noticias.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    previa:b,
+    nota:c,
+    imagen:d,
+    principal:e,
+    date:f
+  },
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#noticia_nacional").html(result);
+}});
+});
+
+
+$(".enviar_deportes").click(function(){
+$("#noticia_deportes").show();
+
+
+a=$(".nombre_nota_d").val();
+b=$(".previa_nota_d").val();
+c=$(".nota_nota_d").val();
+d=$(".imagen_nota_d").val();
+e=$("#principal_nota_d").val();
+f=$(".date_nota_d").val();
+$.ajax({
+  url:"administrador/php/alta_deportes.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    previa:b,
+    nota:c,
+    imagen:d,
+    principal:e,
+    date:f
+  },
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#noticia_deportes").html(result);
+}});
+});
+
+$(".enviar_politica").click(function(){
+$("#noticia_politica").show();
+
+
+a=$(".nombre_nota_p").val();
+b=$(".previa_nota_p").val();
+c=$(".nota_nota_p").val();
+d=$(".imagen_nota_p").val();
+e=$("#principal_nota_p").val();
+f=$(".date_nota_p").val();
+$.ajax({
+  url:"administrador/php/alta_politica.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    previa:b,
+    nota:c,
+    imagen:d,
+    principal:e,
+    date:f
+  },
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#noticia_politica").html(result);
+}});
+});
+
+
+
+
+$(".enviar_seguridad").click(function(){
+$("#noticia_seguridad").show();
+
+
+a=$(".nombre_nota_s").val();
+b=$(".previa_nota_s").val();
+c=$(".nota_nota_s").val();
+d=$(".imagen_nota_s").val();
+e=$("#principal_nota_s").val();
+f=$(".date_nota_s").val();
+$.ajax({
+  url:"administrador/php/alta_seguridad.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    previa:b,
+    nota:c,
+    imagen:d,
+    principal:e,
+    date:f
+  },
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#noticia_seguridad").html(result);
+}});
+});
+
+});
+</script>             
               <div class="col s12 ">
 
                 <div class="fixed-action-btn  click-to-toggle ">
@@ -23,49 +158,56 @@
                 </blockquote>
 
                   <div class="row">
-                    <form class="col s12 z-depth-5">
+                    <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="noticia_nacional"></div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Nombre de la Nota" id="first_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="first_name" type="text" class="validate nombre_nota_n">
                           <label for="first_name">Nombre de la Nota</label>
                         </div>
                         <div class="input-field col s12">
-                          <input placeholder="Previa de la Nota" id="last_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="last_name" type="text" class="validate previa_nota_n">
                           <label for="last_name">Previa de la Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <textarea placeholder="Nota" id="textarea1" class="materialize-textarea"></textarea>
+                        <i class="material-icons prefix">text_format</i>
+                          <textarea  id="textarea1" class="materialize-textarea nota_nota_n"></textarea>
                           <label for="disabled">Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Imagen de la Nota" id="password" type="text" class="validate">
+                        <i class="material-icons prefix">insert_photo</i>
+                          <input  id="imagen_nota_n" type="text" class="validate ">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
+                      <input type="hidden"  class="date_nota_n" value="<?php echo date("Y-m-d") ?>">
                       <div class="row">
-                          <div class="input-field col s12">
-                            <select>
-                              <option value="" disabled selected>Selecciona una Opcion</option>
+                          <div class="input-field col s12 ">
+                          <i class="material-icons prefix">insert_drive_file</i>
+                            <select id="principal_nota_n">
+                              <option value="0">Selecciona una Opcion</option>
 
-                              <option value="si">Si</option>
-                              <option value="no">No</option>
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
                             </select>
                             <label>Nota Principal</label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_noticia" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
 
                 </div>  
@@ -77,51 +219,59 @@
                  <h5>Notas Deportes </h5>
                 </blockquote>
 
-                    <div class="row">
-                    <form class="col s12 z-depth-5">
+                  <div class="row">
+                    <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="noticia_deportes"></div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Nombre de la Nota" id="first_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="first_name" type="text" class="validate nombre_nota_d">
                           <label for="first_name">Nombre de la Nota</label>
                         </div>
                         <div class="input-field col s12">
-                          <input placeholder="Previa de la Nota" id="last_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="last_name" type="text" class="validate previa_nota_d">
                           <label for="last_name">Previa de la Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <textarea placeholder="Nota" id="textarea1" class="materialize-textarea"></textarea>
+                        <i class="material-icons prefix">text_format</i>
+                          <textarea  id="textarea1" class="materialize-textarea nota_nota_d"></textarea>
                           <label for="disabled">Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Imagen de la Nota" id="password" type="text" class="validate">
+                        <i class="material-icons prefix">insert_photo</i>
+                          <input  id="password" type="text" class="validate imagen_nota_d">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
+                      <input type="hidden"  class="date_nota_d" value="<?php echo date("Y-m-d") ?>">
                       <div class="row">
-                          <div class="input-field col s12">
-                            <select>
-                              <option value="" disabled selected>Selecciona una Opcion</option>
+                          <div class="input-field col s12 ">
+                          <i class="material-icons prefix">insert_drive_file</i>
+                            <select id="principal_nota_d">
+                              <option value="0">Selecciona una Opcion</option>
 
-                              <option value="si">Si</option>
-                              <option value="no">No</option>
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
                             </select>
                             <label>Nota Principal</label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_deportes" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
+
                 </div>  
 
 
@@ -132,49 +282,56 @@
                 </blockquote>
 
                   <div class="row">
-                    <form class="col s12 z-depth-5">
+                    <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="noticia_politica"></div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Nombre de la Nota" id="first_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="first_name" type="text" class="validate nombre_nota_p">
                           <label for="first_name">Nombre de la Nota</label>
                         </div>
                         <div class="input-field col s12">
-                          <input placeholder="Previa de la Nota" id="last_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="last_name" type="text" class="validate previa_nota_p">
                           <label for="last_name">Previa de la Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <textarea placeholder="Nota" id="textarea1" class="materialize-textarea"></textarea>
+                        <i class="material-icons prefix">text_format</i>
+                          <textarea  id="textarea1" class="materialize-textarea nota_nota_p"></textarea>
                           <label for="disabled">Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Imagen de la Nota" id="password" type="text" class="validate">
+                        <i class="material-icons prefix">insert_photo</i>
+                          <input  id="password" type="text" class="validate imagen_nota_p">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
+                      <input type="hidden"  class="date_nota_p" value="<?php echo date("Y-m-d") ?>">
                       <div class="row">
-                          <div class="input-field col s12">
-                            <select>
-                              <option value="" disabled selected>Selecciona una Opcion</option>
+                          <div class="input-field col s12 ">
+                          <i class="material-icons prefix">insert_drive_file</i>
+                            <select id="principal_nota_p">
+                              <option value="0">Selecciona una Opcion</option>
 
-                              <option value="si">Si</option>
-                              <option value="no">No</option>
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
                             </select>
                             <label>Nota Principal</label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_politica" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
 
@@ -185,55 +342,57 @@
                  <h5>Notas de Seguridad </h5>
                 </blockquote>
 
-                <div class="row">
-                    <form class="col s12 z-depth-5">
+                  <div class="row">
+                    <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="noticia_seguridad"></div>
                       <div class="row">
                         <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                          <input  id="first_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="first_name" type="text" class="validate nombre_nota_s">
                           <label for="first_name">Nombre de la Nota</label>
                         </div>
                         <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                          <input  id="last_name" type="text" class="validate">
+                        <i class="material-icons prefix">text_format</i>
+                          <input  id="last_name" type="text" class="validate previa_nota_s">
                           <label for="last_name">Previa de la Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                          <textarea  id="textarea1" class="materialize-textarea"></textarea>
+                        <i class="material-icons prefix">text_format</i>
+                          <textarea  id="textarea1" class="materialize-textarea nota_nota_s"></textarea>
                           <label for="disabled">Nota</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                          <input  id="password" type="text" class="validate">
+                        <i class="material-icons prefix">insert_photo</i>
+                          <input  id="password" type="text" class="validate imagen_nota_s">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
+                      <input type="hidden"  class="date_nota_s" value="<?php echo date("Y-m-d") ?>">
                       <div class="row">
-                          <div class="input-field col s12">
-                          <i class="material-icons prefix">account_circle</i>
-                            <select>
-                              <option value="" disabled selected>Selecciona una Opcion</option>
+                          <div class="input-field col s12 ">
+                          <i class="material-icons prefix">insert_drive_file</i>
+                            <select id="principal_nota_s">
+                              <option value="0">Selecciona una Opcion</option>
 
-                              <option value="si">Si</option>
-                              <option value="no">No</option>
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
                             </select>
                             <label>Nota Principal</label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_seguridad" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
 
@@ -377,3 +536,8 @@
 
 
               </div>
+
+              <div id="div-results3"></div>
+              <div id="div-results2"></div>
+              <div id="div-results4"></div>
+              <div id="div-results5"></div>

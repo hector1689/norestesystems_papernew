@@ -11,10 +11,10 @@
       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-      <link href="dist/css/sweetalert.css" rel="stylesheet">
-      <script src="dist/js/functions.js"></script>
+      <link href="css/sweetalert.css" rel="stylesheet">
+      <script src="js/functions.js"></script>
         <!-- Sweet Alert Script -->
-      <script src="dist/js/sweetalert.min.js"></script>
+      <script src="js/sweetalert.min.js"></script>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
