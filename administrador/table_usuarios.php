@@ -54,12 +54,14 @@ $result3 = $sth3->fetchAll();
                               
                                 <td ><?php echo $value['nombre_video'];?></td>
                                 <td ><?php echo $value['video_semana'];?></td>
-
-
-                                   <td>
-                                    <a class="waves-effect waves-light  yellow darken-4 btn"><i class="Tiny material-icons">mode_edit</i></a>
-                                    <a class="waves-effect waves-light red btn"><i class="Tiny material-icons">delete</i></a>
-                                    </td>
+        
+                                <td id="td">
+                                <a href="administrador/editar_videosemana.php?id=<?php echo $value['id']; ?>" class="waves-effect waves-light  yellow darken-4 btn"><i class="Tiny material-icons">mode_edit</i></a>
+                                
+                                </td>
+                                <td>
+                                  <small><a href="administrador/php/eliminar_videosemana.php?id=<?php echo $value['id']; ?>" class="waves-effect waves-light red btn"><i class="Tiny material-icons">delete</i></a></small>
+                                </td>
 
                               </tr>
                                   <?php

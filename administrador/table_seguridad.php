@@ -58,7 +58,9 @@ $result3 = $sth3->fetchAll();
 
                                    <td id="td">
                                     <a href="administrador/editar_seguridad.php?id=<?php echo $value['id']; ?>" class="waves-effect waves-light  yellow darken-4 btn"><i class="Tiny material-icons">mode_edit</i></a>
-                                    <small><a class="waves-effect waves-light red btn"><i class="Tiny material-icons">delete</i></a></small>
+                                    </td>
+                                    <td>
+                                      <a href="administrador/php/eliminar_seguridad.php?id=<?php echo $value['id']; ?>" class="waves-effect waves-light red btn"><i class="Tiny material-icons">delete</i></a>
                                     </td>
 
                               </tr>

@@ -21,45 +21,7 @@ $result3 = $sth3->fetchAll();
      overflow:auto;
 }
 </style>
-<script >
-  function objetoAjax(){
-  var xmlhttp=false;
-  try {
-    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-  } catch (e) {
-    try {
-       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (E) {
-      xmlhttp = false;
-      }
-  }
 
-  if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-    xmlhttp = new XMLHttpRequest();
-  }
-  return xmlhttp;
-}
-
-function eliminarNota(id){
-
-
-    ajax=objetoAjax();
-
-    ajax.open("GET", "administrador/php/eliminar_noticia.php?id="+id);
-    ajax.onreadystatechange=function() {
-    if (ajax.readyState==4) {
-      swal({
-        title: "Felicidades!",
-        text: "Se ha Eliminado el Registro del Médico.",
-        type: "error"
-    });location.reload(900);
-      }
-    }
-
-    ajax.send(null)
-
-}
-</script>
                 <blockquote>
                    <h3><i class="material-icons">view_headline</i> Noticias</h3>                   
                   </blockquote>
@@ -100,7 +62,7 @@ function eliminarNota(id){
                                     
                                     </td>
                                     <td>
-                                      <small><a onclick="eliminarNota('<?php echo $value['id']; ?>')" class="waves-effect waves-light red btn"><i class="Tiny material-icons">delete</i></a></small>
+                                      <small><a href="administrador/php/eliminar_noticia.php?id=<?php echo $value['id']; ?>" class="waves-effect waves-light red btn"><i class="Tiny material-icons">delete</i></a></small>
                                     </td>
 
                               </tr>

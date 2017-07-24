@@ -4,8 +4,9 @@
         <a href="administrador/table_politica.php" class="collection-item">Publicaciones Politica <i class="Tiny material-icons">work</i></a>
         <a href="administrador/table_seguridad.php" class="collection-item">Publicaciones Seguridad <i class="Tiny material-icons">security</i></a>
         <a href="administrador/table_usuarios.php" class="collection-item">Publicaciones Video <i class="Tiny material-icons">movie</i></a>
-        <a href="administrador/table_columnistas.php" class="collection-item">Publicaciones Columnistas <i class="Tiny material-icons">person</i></a>
+        <a href="administrador/table_columnistas.php" class="collection-item">Columnistas <i class="Tiny material-icons">person</i></a>
         <a href="administrador/table_columna.php" class="collection-item">Publicaciones Columnas <i class="Tiny material-icons">assignment</i></a>
+        <a href="administrador/table_user.php" class="collection-item">Usuarios <i class="Tiny material-icons">group</i></a>
    </div>
 
      <script>

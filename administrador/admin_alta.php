@@ -2,7 +2,7 @@
   $(document).ready(function(){
 
 
-
+//////////////////////////////////////
 $(".enviar_noticia").click(function(){
 $("#noticia_nacional").show();
 
@@ -34,7 +34,7 @@ $("#noticia_nacional").html(result);
 }});
 });
 
-
+/////////////////////////////////////////////////////
 $(".enviar_deportes").click(function(){
 $("#noticia_deportes").show();
 
@@ -65,7 +65,7 @@ alert("error petición ajax");
 $("#noticia_deportes").html(result);
 }});
 });
-
+//////////////////////////////////////////////////////////////////////
 $(".enviar_politica").click(function(){
 $("#noticia_politica").show();
 
@@ -98,7 +98,7 @@ $("#noticia_politica").html(result);
 });
 
 
-
+//////////////////////////////////////////////////
 
 $(".enviar_seguridad").click(function(){
 $("#noticia_seguridad").show();
@@ -128,6 +128,92 @@ alert("error petición ajax");
 },
   success:function(result){
 $("#noticia_seguridad").html(result);
+}});
+});
+
+///////////////////////////////////////////////
+$(".enviar_columnista").click(function(){
+$("#columnista_add").show();
+
+
+a=$("#add_nombre").val();
+b=$("#add_apellido").val();
+c=$("#add_img").val();
+
+$.ajax({
+  url:"administrador/php/alta_columnista.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    apellido:b,
+    imagen:c
+  },
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#columnista_add").html(result);
+}});
+});
+
+
+//////////////////////////////////////////////////
+
+$(".enviar_columna").click(function(){
+$("#add_columna").show();
+
+
+a=$("#nombre_columnista_colum").val();
+b=$("#titulo_columnista").val();
+c=$("#nota_columnista").val();
+d=$("#date_nota").val();
+
+$.ajax({
+  url:"administrador/php/alta_columna.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    titulo:b,
+    nota:c,
+    date:d
+  },
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#add_columna").html(result);
+}});
+});
+
+//////////////////////////////////////////
+
+$(".enviar_usuario").click(function(){
+$("#add_usuario").show();
+
+
+a=$("#nombre_usuario").val();
+b=$("#password_usuario").val();
+c=$("#tipo_usuario").val();
+
+$.ajax({
+  url:"administrador/php/alta_usuario.php",
+  cache:false,
+  type:"POST",
+  data:{
+    
+    nombre:a,
+    password:b,
+    tipo:c
+},
+  error: function(result){
+alert("error petición ajax");
+},
+  success:function(result){
+$("#add_usuario").html(result);
 }});
 });
 
@@ -245,7 +331,7 @@ $("#noticia_seguridad").html(result);
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">insert_photo</i>
-                          <input  id="password" type="text" class="validate imagen_nota_d">
+                          <input   type="text" class="validate imagen_nota_d">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
@@ -307,7 +393,7 @@ $("#noticia_seguridad").html(result);
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">insert_photo</i>
-                          <input  id="password" type="text" class="validate imagen_nota_p">
+                          <input   type="text" class="validate imagen_nota_p">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
@@ -368,7 +454,7 @@ $("#noticia_seguridad").html(result);
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">insert_photo</i>
-                          <input  id="password" type="text" class="validate imagen_nota_s">
+                          <input   type="text" class="validate imagen_nota_s">
                           <label for="password">Imagen de Nota</label>
                         </div>
                       </div>
@@ -396,47 +482,65 @@ $("#noticia_seguridad").html(result);
                   </div>
                 </div>
 
+                  <?php 
+                  $objData = new Database();
 
-                <div class="respuesta-6" style="display:none">
+                  $sth3 = $objData->prepare('SELECT nombre_columnista,apellido_columnista FROM `columnistas`  ');
+
+                  $sth3->execute();
+
+                  $result3 = $sth3->fetchAll();
+                  ?>
+
+                 <div class="respuesta-6" style="display:none">
 
                  <blockquote>
-                 <h5>Columnista </h5>
+                 <h5>Columna </h5>
                 </blockquote>
 
                 <div class="row">
                     <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="add_columna"></div>
                       <div class="row">
                           <div class="input-field col s12">
                           <i class="material-icons prefix">account_circle</i>
-                            <select>
-                              <option value="" disabled selected>Selecciona una Opcion</option>
-
-                              <option value="si">Si</option>
-                              <option value="no">No</option>
-                            </select>
+                            <select id="nombre_columnista_colum">
+                           
+                            <?php
+                            if($result3){
+                              foreach ($result3 as $key => $value) {
+                             
+                            ?>
+                            <option value="<?php echo $value['nombre_columnista'].$value['apellido_columnista']; ?>"><?php echo$value['nombre_columnista'].$value['apellido_columnista']; ?></option> 
+                            <?php 
+                            }                            
+                             }
+                             ?>
+                             </select>
                             <label>Nombre del Columnista</label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">format_color_text</i>
-                          <input id="first_name" type="text" class="validate">
+                          <input id="titulo_columnista" type="text" class="validate">
                           <label for="first_name">Titulo de Columna</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">format_align_left</i>
-                          <textarea  id="textarea1" class="materialize-textarea"></textarea>
+                          <textarea  id="nota_columnista" class="materialize-textarea"></textarea>
                           <label for="disabled">Nota del Columnista</label>
                         </div>
                       </div>
        
+                      <input type="hidden"  id="date_nota" value="<?php echo date("Y-m-d") ?>">
 
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_columna" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
@@ -453,40 +557,41 @@ $("#noticia_seguridad").html(result);
                 </blockquote>
 
                 <div class="row">
-                    <form class="col s12 z-depth-5">
+                    <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="add_usuario"></div>
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                          <input  id="first_name" type="text" class="validate">
+                          <input  id="nombre_usuario" type="text" class="validate">
                           <label for="first_name">Nombre del Usuario</label>
                         </div>
                         <div class="input-field col s12">
                         <i class="material-icons prefix">dialpad</i>
-                          <input  id="last_name" type="password" class="validate">
+                          <input  id="password_usuario" type="password" class="validate">
                           <label for="last_name">Password del Usuario</label>
                         </div>
                       </div>
                       <div class="row">
                           <div class="input-field col s12">
                           <i class="material-icons prefix">supervisor_account</i>
-                            <select>
-                              <option value="" disabled selected>Selecciona una Opcion</option>
+                            <select id="tipo_usuario">
+                              <option value="0" disabled selected>Selecciona una Opcion</option>
 
-                              <option value="administrador">Administrador</option>
-                              <option value="usuario">Usuario</option>
+                              <option value="1">Administrador</option>
+                              <option value="2">Usuario</option>
                             </select>
                             <label>Tipo de Usuario</label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_usuario" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
 
@@ -498,36 +603,37 @@ $("#noticia_seguridad").html(result);
                 </blockquote>
 
                 <div class="row">
-                    <form class="col s12 z-depth-5">
+                    <div class="col s12 z-depth-5">
                     <div style="height: 30px;"></div>
+                    <div id="columnista_add"></div>
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="material-icons prefix">account_circle</i>
-                            <input id="icon_prefix" type="text" class="validate">
+                            <input id="add_nombre" type="text" class="validate ">
                             <label for="icon_prefix">Nombre del Columnista</label>
                         </div>
                         <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                          <input  id="last_name" type="text" class="validate">
+                          <input  id="add_apellido" type="text" class="validate ">
                           <label for="last_name">Apellido del Columnista</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
                         <i class="material-icons prefix">panorama</i>
-                          <input  id="last_name" type="text" class="validate">
+                          <input  id="add_img" type="text" class="validate ">
                           <label for="disabled">Imagen del columnista</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col s12">
-                         <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                         <button class="btn waves-effect waves-light enviar_columnista" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
         
